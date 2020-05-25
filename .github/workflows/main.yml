@@ -2,6 +2,8 @@ name: CI
 on:
   issues:
     types: [opened]
+  project_card:
+    types: [moved]
 
 jobs:
   build:
