@@ -21,11 +21,14 @@ async function label() {
   const ownerName = context.payload.repository.owner.login;
   var issueNumber;
 
+  if(context.payload.project_card) {
+    console.log(context.payload);
+  }
   if (context.payload.issue !== undefined) {
     issueNumber = context.payload.issue.number;
   } else if (context.payload.pull_request !== undefined) {
     issueNumber = context.payload.pull_request.number;
-  } else if (context.payload.project_card !== undefined) {
+  } else if (context.payload.project_card !== undefined && context.payload.project_card.issues_url) {
     issueNumber = context.payload.project_card.issues_url.split("/").pop()
     if (issueNumber == "issues") {
       issueNumber = undefined;
