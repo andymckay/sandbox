@@ -1,6 +1,7 @@
 name: CI
-
-on: [repository_dispatch]
+on:
+  issues:
+    types: [opened]
 
 jobs:
   build:
