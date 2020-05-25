@@ -1,0 +1,24 @@
+name: 'Simple Issue Labeler'
+description: 'Adds and removes labels from issues.'
+inputs:
+  repo-token:
+    description: 'Token for the repo. Can be passed in using {{ secrets.GITHUB_TOKEN }}'
+    required: true
+  add-labels:
+    description: 'Labels to add to an issue, seperated by commas.'
+    required: false
+  remove-labels:
+    description: 'Labels to be removed from an issue, seperated by commas.'
+    required: false
+  ignore-if-assigned:
+    description: "True/False value to indicate if no labels should be added or removed if there is an assignee to the issue."
+    required: true
+  ignore-if-labeled:
+    description: "True/False value to indicate if no labels should be added or removed if the issue already has labels."
+    required: false
+branding:
+  icon: zap-off
+  color: orange
+runs:
+  using: 'node12'
+  main: 'label.js'
