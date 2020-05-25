@@ -28,8 +28,8 @@ async function label() {
     issueNumber = context.payload.issue.number;
   } else if (context.payload.pull_request !== undefined) {
     issueNumber = context.payload.pull_request.number;
-  } else if (context.payload.project_card !== undefined && context.payload.project_card.context_url) {
-    issueNumber = context.payload.project_card.context_url.split("/").pop()
+  } else if (context.payload.project_card !== undefined && context.payload.project_card.content_url) {
+    issueNumber = context.payload.project_card.content_url.split("/").pop()
   }
 
   // query for the most recent information about the issue. Between the issue being created and
