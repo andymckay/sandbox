@@ -1,0 +1,15 @@
+name: Create Meeting Board
+on: [repository_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: andymckay/get-gist-action@master
+      id: get
+      with:
+        gistURL: "https://gist.github.com/andymckay/0b83635df3517bc1989a200bb1759ca8"
+    - uses: andymckay/project-creator@master
+      with:
+        destination: "andymckay/sandbox"
+        structure: ${{ steps.get.outputs.file }}
