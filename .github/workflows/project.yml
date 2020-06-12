@@ -12,4 +12,4 @@ jobs:
     - uses: andymckay/project-creator@master
       with:
         destination: "andymckay/sandbox"
-        structure: ${{ steps.get.outputs.file }}
+        file: ${{ steps.get.outputs.file }}
