@@ -6,6 +6,7 @@ name: click
 # events but only for the master branch
 on:
   repository_dispatch:
+  push:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,3 +30,5 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
         echo https://github.com
+        echo http://example.com
+        echo ^
