@@ -1,7 +1,7 @@
 name: Notify users based on issue labels
 
 on:
-  issues:
+  pull_request:
       types: [labeled]
 
 jobs:
