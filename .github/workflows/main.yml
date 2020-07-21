@@ -1,16 +1,10 @@
 name: CI
 on:
-  project_card:
-    types: [moved]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - run: npm install
-    - uses: ./.
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        add-labels: "needs-triage, bug"
-        ignore-if-assigned: true
+    - run: exit 1
