@@ -4,7 +4,7 @@ on:
 
 jobs:
   one:
-    runs-on: [ubuntu-latest, windows-latest]
+    runs-on: [ ubuntu-latest, windows-latest ]
     strategy:
       matrix:
         multiply: [Debug, Release, Windows, Linux]
