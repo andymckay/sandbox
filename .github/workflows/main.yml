@@ -3,8 +3,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  one:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        multiply: [Debug, Release, Windows, Linux]
     steps:
     - uses: actions/checkout@master
     - run: exit 1
+    continue-on-error: true
+  two:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        multiply: [Debug, Release, Windows, Linux]
+    steps:
+    - uses: actions/checkout@master
+    - run: exit 1
+    continue-on-error: true
