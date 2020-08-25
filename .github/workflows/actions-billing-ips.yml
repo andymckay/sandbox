@@ -29,5 +29,6 @@ jobs:
         echo -e "github.com:\n  - user: andymckay\n    oauth_token: $ACTIONS_IP_WORKFLOW_OAUTH_TOKEN" > ~/.config/gh/config.yml
     - name: Get IPs and diff
       run: |
+        sudo apt-get install python3-setuptools
         pip3 install actions-ips
         python3 .github/workflows/actions-billing-ips.py
