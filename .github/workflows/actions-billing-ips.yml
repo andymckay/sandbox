@@ -30,5 +30,6 @@ jobs:
     - name: Get IPs and diff
       run: |
         sudo apt-get install python3-setuptools
+        pip3 install wheel
         pip3 install actions-ips
         python3 .github/workflows/actions-billing-ips.py
