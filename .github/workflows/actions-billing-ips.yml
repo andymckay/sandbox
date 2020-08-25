@@ -1,0 +1,33 @@
+
+# For details see: https://github.com/github/c2c-actions-experience/blob/master/doc/actions-ip-addresses.md
+#
+# This is an Action to update a file in GitHub. It only needs to run once a week, because the
+# IP addresses aren't updated more often than that.
+#
+# Please see the matching `.github/workflows/actions-billing-ips.py` file.
+name: "IP Address list"
+
+on:
+  repository_dispatch:
+  schedule:
+  - cron: "30 12 * * 1"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install gh
+      env:
+        ACTIONS_IP_WORKFLOW_OAUTH_TOKEN: ${{ secrets.ACTIONS_IP_WORKFLOW_OAUTH_TOKEN }}
+      run: |
+        wget https://github.com/cli/cli/releases/download/v0.5.7/gh_0.5.7_linux_amd64.deb
+        sudo apt install git && sudo dpkg -i gh_*_linux_amd64.deb
+        mkdir -p ~/.config/gh
+        echo -e "github.com:\n  - user: andymckay\n    oauth_token: $ACTIONS_IP_WORKFLOW_OAUTH_TOKEN" > ~/.config/gh/config.yml
+    - name: Get IPs and diff
+      run: |
+        pip install actions-ips
+        python3 .github/workflows/actions-billing-ips.py
