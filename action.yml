@@ -3,13 +3,9 @@ description: 'Notify individuals or teams based on issue labels.'
 inputs:
   token:
     description: 'The GitHub authentication token.'
-    required: true
-  recipients:
-    description: 'Mapping of label to notification recipients.'
-    required: true
-  message:
-    description: 'The message to post in the issue comment.'
-    default: 'Heads up {recipients} - the "{label}" label was applied to this issue.'
+    default: ${{ github.token }}
+    required: false
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
