@@ -1,7 +1,8 @@
 name: Label
 
 on:
-  issues: [labeled]
+  issues: 
+    types: [labeled]
     
 jobs:
     test:
