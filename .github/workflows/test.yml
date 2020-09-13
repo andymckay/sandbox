@@ -1,32 +1,12 @@
-name: Symfony
-
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  issues: [labelled]
+    
 jobs:
-  symfony-tests:
-
+    test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: ./.
 
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-
-    - name: Directory Permissions
-      run: chmod -R 777 var
-
-    - name: Create Database
-      run: |
-        mkdir -p data
-        touch data/database_test.sqlite
-
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DATABASE_URL: sqlite:///%kernel.project_dir%/data/database_test.sqlite
-
-      run: ./bin/phpunit
+   
