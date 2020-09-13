@@ -1,11 +1,12 @@
+name: Label
+
 on:
   issues: [labeled]
     
 jobs:
     test:
-    runs-on: ubuntu-latest
-
-    steps:
+      runs-on: ubuntu-latest
+      steps:
       - uses: actions/checkout@v2
       - uses: ./.
 
