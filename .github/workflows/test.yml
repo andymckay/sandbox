@@ -8,7 +8,10 @@ jobs:
     test:
       runs-on: ubuntu-latest
       steps:
-      - uses: actions/checkout@v2
-      - uses: ./.
+      - uses: ben-z/actions-comment-on-issue@1.0.2
+        if: contains(github.event.issue.labels.*.name, 'enhancement')
+        with:
+          message: "This is a test" 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
    
