@@ -8,10 +8,8 @@ jobs:
     test:
       runs-on: ubuntu-latest
       steps:
-      - uses: ben-z/actions-comment-on-issue@1.0.2
-        if: github.event.label == 'enhancement'
-        with:
-          message: "This is a test" 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
    
