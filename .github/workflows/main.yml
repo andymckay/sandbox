@@ -9,7 +9,7 @@ jobs:
       matrix:
         multiply: [Debug, Release, Windows, Linux]
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/heroku@master
     - run: exit 1
     continue-on-error: true
   two:
